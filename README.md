@@ -1,5 +1,5 @@
-# react-starter
-Simple Boilerplate for React Project
+# oekaki.studio
+A collaborative drawing application.
 
 ## To start the app
 
