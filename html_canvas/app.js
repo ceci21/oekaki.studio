@@ -21,8 +21,8 @@ var canvasWidth = '500px';
 var canvasHeight = '500px';
 var canvasStyle = 'border:1px solid #000000;';
 
-// Gets mouse position
-function getMousePos(canvas, evt) {
+// Various canvas events.
+var getMousePos = function(canvas, evt) {
   var rect = canvas.getBoundingClientRect();
   return {
     x: evt.clientX - rect.left,
@@ -30,18 +30,17 @@ function getMousePos(canvas, evt) {
   }
 }
 
-// Event listeners for canvas/mouse actions
-canvas.addEventListener('mousedown', function(evt) {
+var mouseDown = function(evt) {
   draw = true;
   lastPosition = getMousePos(canvas, evt);
-});
+};
 
-canvas.addEventListener('mouseup', function(evt) {
+var mouseUp = function(evt) {
   draw = false;
   lineStarted = false;
-});
+};
 
-canvas.addEventListener('mousemove', function(evt) {
+var mouseMove = function(evt) {
   if (lineStarted === false) {
     lastPosition = getMousePos(canvas, evt);
     lineStarted = true;
@@ -60,23 +59,21 @@ canvas.addEventListener('mousemove', function(evt) {
     lastPosition.x = mousePos.x;
     lastPosition.y = mousePos.y;
   }
+}
 
-}, false);
-
-// Event listeners for canvas buttons
-colorPicker.addEventListener('input', function(evt) {
+var pickColor = function() {
   color = colorPicker.value;
-});
+};
 
-clear.addEventListener('click', function() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-});
-
-sizeSelector.addEventListener('input', function(evt) {
+var selectSize = function(evt) {
   size = sizeSelector.value;
-});
+};
 
-layerSelector.addEventListener('input', function(evt) {
+var clearCanvas = function() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+};
+
+var selectLayer = function(evt) {
   if (layerSelector.value > 3) {
     layerSelector.value = 3;
   } else if (layerSelector.value < 0){
@@ -107,4 +104,41 @@ layerSelector.addEventListener('input', function(evt) {
 
   canvas = canvasLayers[layer];
   ctx = canvasLayers[layer].getContext('2d');
-});
+}
+
+// Create and remove event listeners.
+var createEventListeners = function() {
+  // Event listeners for canvas/mouse actions
+  canvas.addEventListener('mousedown', mouseDown);
+
+  canvas.addEventListener('mouseup', mouseUp);
+
+  canvas.addEventListener('mousemove', mouseMove, false);
+
+  colorPicker.addEventListener('input', pickColor);
+
+  clear.addEventListener('click', clearCanvas);
+
+  sizeSelector.addEventListener('input', selectSize);
+
+  layerSelector.addEventListener('input', selectLayer);
+}
+
+var removeEventListeners = function() {
+  // Event listeners for canvas/mouse actions
+  canvas.removeEventListener('mousedown', mouseDown);
+
+  canvas.removeEventListener('mouseup', mouseUp);
+
+  canvas.removeEventListener('mousemove', mouseMove);
+
+  colorPicker.removeEventListener('input', pickColor);
+
+  clear.removeEventListener('click', clearCanvas);
+
+  sizeSelector.removeEventListener('input', selectSize);
+
+  layerSelector.removeEventListener('input', selectLayer);
+}
+
+createEventListeners();
