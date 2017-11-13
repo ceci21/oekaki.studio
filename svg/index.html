@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="./style.css"></link>
+  <title>Oekaki Studio</title>
+</head>
+
+<body>
+  <h1>Oekaki Studio</h1>
+  <svg width="1024" height="768">
+    <rect class="rect" x="50" y="20" width="150" height="150"/>
+    <polygon points="220,10 300,210 170,250 123,234" style="fill:lime;stroke:purple;stroke-width:1" />
+    <polygon points="100,10 40,198 190,78 10,78 160,198" style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;" />
+    <polyline points="0,40 40,40 40,80 80,80 80,120 120,120 120,160" style="fill:none;stroke:red;stroke-width:4" />
+    <text x="0" y="15" fill="red">I love SVG!</text>
+    <text x="0" y="15" fill="red" transform="rotate(30 20,40)">I love SVG</text>4
+    <g fill="none" stroke="black" stroke-width="4">
+      <path stroke-dasharray="5,5" d="M5 20 l215 0" />
+      <path stroke-dasharray="10,10" d="M5 40 l215 0" />
+      <path stroke-dasharray="20,10,5,5,5,10" d="M5 60 l215 0" />
+    </g>
+  </svg>
+</body>
+
+</html>
