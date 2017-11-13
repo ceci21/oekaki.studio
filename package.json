@@ -6,7 +6,8 @@
   "author": "Patrick Daly",
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon server/index.js"
+    "server-dev": "nodemon server/index.js",
+    "start": "npm run server-dev"
   },
   "license": "ISC",
   "devDependencies": {
