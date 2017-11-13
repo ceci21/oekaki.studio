@@ -6,13 +6,16 @@
 </head>
 
 <body>
-    <canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;"></canvas>
+    <canvas id="myCanvas" width="1000" height="500" style="border:1px solid #000000;"></canvas>
     <button id='clear'>Clear</button>
+    <button id='undo'>Undo</button>
+    <button id='redo'>Redo</button>
     <form>
         <input type="color" value="" id='color-picker'>
         <input id="size" type="number" placeholder="size">
         <input id="layer" type="number" placeholder="layer">
     </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <script src="./app.js"></script>
 </body>
 
